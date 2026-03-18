@@ -1,0 +1,22 @@
+[
+  { "Nome": "Alan Turing", "Categoria": "Pessoa", "Ano": 1936, "Criador/Empresa": "N/A" },
+  { "Nome": "ENIAC", "Categoria": "Hardware", "Ano": 1945, "Criador/Empresa": "John Mauchly / J. Presper Eckert" },
+  { "Nome": "Grace Hopper", "Categoria": "Pessoa", "Ano": 1952, "Criador/Empresa": "N/A" },
+  { "Nome": "Algoritmo de Dijkstra", "Categoria": "Algoritmo", "Ano": 1956, "Criador/Empresa": "Edsger W. Dijkstra" },
+  { "Nome": "Fortran", "Categoria": "Linguagem", "Ano": 1957, "Criador/Empresa": "IBM" },
+  { "Nome": "Margaret Hamilton", "Categoria": "Pessoa", "Ano": 1969, "Criador/Empresa": "N/A" },
+  { "Nome": "ARPANET", "Categoria": "Rede", "Ano": 1969, "Criador/Empresa": "DARPA" },
+  { "Nome": "Unix", "Categoria": "Sistema Operacional", "Ano": 1969, "Criador/Empresa": "AT&T Bell Labs" },
+  { "Nome": "Intel 4004", "Categoria": "Hardware", "Ano": 1971, "Criador/Empresa": "Intel" },
+  { "Nome": "C", "Categoria": "Linguagem", "Ano": 1972, "Criador/Empresa": "Dennis Ritchie" },
+  { "Nome": "Árvore B+", "Categoria": "Algoritmo", "Ano": 1973, "Criador/Empresa": "Rudolf Bayer / Edward M. McCreight" },
+  { "Nome": "Apple II", "Categoria": "Hardware", "Ano": 1977, "Criador/Empresa": "Apple" },
+  { "Nome": "World Wide Web", "Categoria": "Software", "Ano": 1989, "Criador/Empresa": "Tim Berners-Lee" },
+  { "Nome": "Python", "Categoria": "Linguagem", "Ano": 1991, "Criador/Empresa": "Guido van Rossum" },
+  { "Nome": "Linux", "Categoria": "Sistema Operacional", "Ano": 1991, "Criador/Empresa": "Linus Torvalds" },
+  { "Nome": "Windows 95", "Categoria": "Sistema Operacional", "Ano": 1995, "Criador/Empresa": "Microsoft" },
+  { "Nome": "Java", "Categoria": "Linguagem", "Ano": 1995, "Criador/Empresa": "Sun Microsystems" },
+  { "Nome": "Google Search", "Categoria": "Software", "Ano": 1997, "Criador/Empresa": "Larry Page / Sergey Brin" },
+  { "Nome": "Git", "Categoria": "Software", "Ano": 2005, "Criador/Empresa": "Linus Torvalds" },
+  { "Nome": "Ada Lovelace", "Categoria": "Pessoa", "Ano": 1843, "Criador/Empresa": "N/A" }
+]

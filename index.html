@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MuseuDle - História da Computação</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="museum-header">
+        <h1>MuseuDle</h1>
+        <p>Adivinhe o artefato da História da Computação!</p>
+    </header>
+
+    <main class="game-container">
+        <div class="input-section">
+            <input type="text" id="guess-input" list="guess-datalist" placeholder="Digite seu palpite..." autocomplete="off">
+            <datalist id="guess-datalist"></datalist>
+            <button id="submit-btn" class="interactive-btn">Adivinhar</button>
+        </div>
+
+        <div class="table-header">
+            <span>Nome</span>
+            <span>Categoria</span>
+            <span>Ano</span>
+            <span>Criador/Empresa</span>
+        </div>
+        
+        <div id="guesses-grid" class="guesses-grid">
+            <!-- Palpites aparecerão aqui -->
+        </div>
+
+        <div id="game-over-modal" class="hidden">
+            <div class="modal-content">
+                <h2 id="modal-title"></h2>
+                <p id="modal-message"></p>
+                <div class="daily-countdown">Próximo artefato em: <span id="countdown"></span></div>
+                <button id="close-modal-btn" class="interactive-btn">Fechar</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
