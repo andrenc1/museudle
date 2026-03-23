@@ -47,11 +47,109 @@ body {
     color: #555;
 }
 
-.game-container {
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
     width: 100%;
-    max-width: 800px;
+    max-width: 1100px;
     padding: 0 1rem;
     box-sizing: border-box;
+}
+
+.sidebar {
+    width: 250px;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px var(--shadow);
+    max-height: 70vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.sidebar-header {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+#available-items-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+#available-items-list li {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#available-items-list li.guessed-wrong {
+    background-color: var(--amarelo);
+    color: var(--white);
+    border-color: var(--amarelo);
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+
+#available-items-list li.guessed-correct {
+    background-color: var(--verde);
+    color: var(--white);
+    border-color: var(--verde);
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+
+#available-items-list li.eliminated {
+    opacity: 0.6;
+    text-decoration: line-through;
+    pointer-events: none;
+    background-color: transparent;
+    color: #999;
+    border-color: #eee;
+}
+
+#available-items-list li {
+    cursor: pointer;
+}
+
+#available-items-list li:hover {
+    background-color: #f4f4f4;
+}
+
+#available-items-list li:last-child {
+    border-bottom: none;
+}
+
+.game-container {
+    flex-grow: 1;
+    max-width: 800px;
+    width: 100%;
+}
+
+@media (max-width: 850px) {
+    .main-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .sidebar {
+        width: 100%;
+        max-width: 800px;
+        order: 2;
+        margin-top: 2rem;
+    }
+    .game-container {
+        order: 1;
+    }
 }
 
 .input-section {
@@ -103,6 +201,41 @@ body {
     transform: translateY(0);
 }
 
+.legend-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend-box {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: white;
+}
+
+.legend-box.verde { background-color: var(--verde); }
+.legend-box.amarelo { background-color: var(--amarelo); }
+.legend-box.cinza { background-color: var(--cinza); }
+.legend-box.font-icon { 
+    background-color: transparent; 
+    border: 1px solid var(--border-color); 
+    color: var(--text-color);
+}
+
 .table-header {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
@@ -117,8 +250,48 @@ body {
 }
 
 @media (max-width: 600px) {
+    .main-wrapper {
+        padding: 0 0.5rem;
+    }
+    .museum-header h1 {
+        font-size: 2.2rem;
+    }
+    .museum-header p {
+        font-size: 0.85rem;
+    }
+    .input-section {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+    #guess-input {
+        max-width: none;
+        width: 100%;
+    }
+    #submit-btn {
+        width: 100%;
+    }
+    .legend-container {
+        font-size: 0.75rem;
+        gap: 8px;
+    }
     .table-header {
-        font-size: 0.8rem;
+        font-size: 0.65rem;
+        grid-template-columns: 1fr 1.1fr 0.8fr 1.1fr;
+        gap: 5px;
+    }
+    .guess-row {
+        grid-template-columns: 1fr 1.1fr 0.8fr 1.1fr;
+        gap: 5px;
+    }
+    .card-face {
+        font-size: 0.65rem;
+        word-break: break-word;
+        padding: 2px;
+        line-height: 1.1;
+    }
+    .guess-card-container {
+        height: 75px;
     }
 }
 
@@ -126,6 +299,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-height: 200px;
 }
 
 .guess-row {

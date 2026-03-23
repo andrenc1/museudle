@@ -30,7 +30,7 @@ async function init() {
         itens = await response.json();
         setupDailyItem();
         populateDatalist();
-        loadState();
+        populateSidebar();
         setupEventListeners();
     } catch (e) {
         console.error("Failed to load itens.json", e);
@@ -54,44 +54,61 @@ function populateDatalist() {
     });
 }
 
-function loadState() {
-    const todayStr = getTodayString();
-    const saved = localStorage.getItem('museudle_state');
-    if (saved) {
-        try {
-            const state = JSON.parse(saved);
-            if (state.date === todayStr) {
-                guesses = state.guesses || [];
-                guesses.forEach(guessObj => renderRow(guessObj, false));
-                
-                if (guesses.length > 0) {
-                    const lastGuess = guesses[guesses.length - 1];
-                    if (lastGuess.Nome.toLowerCase() === dailyItem.Nome.toLowerCase()) {
-                        gameWon = true;
-                        showGameOverModal(true, false);
-                    }
-                }
-            } else {
-                localStorage.removeItem('museudle_state');
-            }
-        } catch (e) {
-            localStorage.removeItem('museudle_state');
+function populateSidebar() {
+    const list = document.getElementById('available-items-list');
+    if (!list) return;
+    const sorted = [...itens].sort((a, b) => a.Nome.localeCompare(b.Nome));
+    sorted.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item.Nome;
+        li.dataset.nome = item.Nome;
+        li.title = "Clique para usar como palpite";
+        li.addEventListener('click', () => {
+            const input = document.getElementById('guess-input');
+            input.value = item.Nome;
+            handleGuess();
+        });
+        list.appendChild(li);
+    });
+}
+
+function showArtifactInfo() {
+    document.getElementById('modal-primary-content').classList.add('hidden');
+    document.getElementById('modal-secondary-content').classList.remove('hidden');
+    
+    document.getElementById('info-nome').textContent = dailyItem.Nome;
+    document.getElementById('info-categoria').textContent = dailyItem.Categoria;
+    document.getElementById('info-ano').textContent = dailyItem.Ano;
+    document.getElementById('info-criador').textContent = dailyItem["Criador/Empresa"];
+    
+    const searchLink = document.getElementById('info-search-link');
+    if (dailyItem.Link) {
+        searchLink.href = dailyItem.Link;
+        if (dailyItem.Link.includes("tainacan.facom.ufu.br")) {
+            searchLink.textContent = "Ver no Acervo (Tainacan)";
+        } else {
+            searchLink.textContent = "Saber mais sobre o item";
         }
+        searchLink.style.backgroundColor = "var(--verde)";
+    } else {
+        const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(dailyItem.Nome + " computação história")}`;
+        searchLink.href = searchUrl;
+        searchLink.textContent = "Pesquisar no Google";
+        searchLink.style.backgroundColor = "var(--amarelo)";
     }
 }
 
-function saveState() {
-    const state = {
-        date: getTodayString(),
-        guesses: guesses
-    };
-    localStorage.setItem('museudle_state', JSON.stringify(state));
+function hideArtifactInfo() {
+    document.getElementById('modal-secondary-content').classList.add('hidden');
+    document.getElementById('modal-primary-content').classList.remove('hidden');
 }
 
 function setupEventListeners() {
     const btn = document.getElementById('submit-btn');
     const input = document.getElementById('guess-input');
     const closeBtn = document.getElementById('close-modal-btn');
+    const saibaMaisBtn = document.getElementById('saiba-mais-btn');
+    const backBtn = document.getElementById('back-modal-btn');
 
     btn.addEventListener('click', handleGuess);
     input.addEventListener('keypress', (e) => {
@@ -100,7 +117,11 @@ function setupEventListeners() {
     
     closeBtn.addEventListener('click', () => {
         document.getElementById('game-over-modal').classList.add('hidden');
+        hideArtifactInfo();
     });
+
+    if (saibaMaisBtn) saibaMaisBtn.addEventListener('click', showArtifactInfo);
+    if (backBtn) backBtn.addEventListener('click', hideArtifactInfo);
     
     // Select input on load
     input.focus();
@@ -130,9 +151,19 @@ function handleGuess() {
     }
 
     guesses.push(guessItem);
-    saveState();
+    
+    // Highlight sidebar item
+    const isCorrect = guessItem.Nome.toLowerCase() === dailyItem.Nome.toLowerCase();
+    const listItems = document.querySelectorAll('#available-items-list li');
+    listItems.forEach(li => {
+        if (li.dataset.nome === guessItem.Nome) {
+            li.classList.add(isCorrect ? 'guessed-correct' : 'guessed-wrong');
+        }
+    });
+
     
     renderRow(guessItem, true);
+    updateSidebar();
     input.value = '';
     input.focus();
 
@@ -153,6 +184,45 @@ function checkCreator(guessCreator, dailyCreator) {
     if (overlap.length > 0) return 'amarelo';
     
     return 'cinza';
+}
+
+function updateSidebar() {
+    const listItems = document.querySelectorAll('#available-items-list li');
+    
+    listItems.forEach(li => {
+        const itemName = li.dataset.nome;
+        const itemObj = itens.find(i => i.Nome === itemName);
+        if (!itemObj) return;
+
+        let possible = true;
+
+        for (const g of guesses) {
+            // Categoria
+            if (g.Categoria === dailyItem.Categoria) {
+                if (itemObj.Categoria !== g.Categoria) possible = false;
+            } else {
+                if (itemObj.Categoria === g.Categoria) possible = false;
+            }
+
+            // Ano
+            if (g.Ano === dailyItem.Ano) {
+                if (itemObj.Ano !== g.Ano) possible = false;
+            } else if (g.Ano < dailyItem.Ano) {
+                if (itemObj.Ano <= g.Ano) possible = false;
+            } else if (g.Ano > dailyItem.Ano) {
+                if (itemObj.Ano >= g.Ano) possible = false;
+            }
+            
+            // Criador/Empresa
+            if (g["Criador/Empresa"] === dailyItem["Criador/Empresa"]) {
+                if (itemObj["Criador/Empresa"] !== g["Criador/Empresa"]) possible = false;
+            }
+        }
+
+        if (!possible && !li.classList.contains('guessed-wrong') && !li.classList.contains('guessed-correct')) {
+            li.classList.add('eliminated');
+        }
+    });
 }
 
 function renderRow(guessItem, animate = true) {
