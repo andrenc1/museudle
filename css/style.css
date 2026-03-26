@@ -1,83 +1,63 @@
 :root {
-    --bg-color: #f4f1ea;
-    --text-color: #2c2c2c;
+    --bg-color: #fafafa;
+    --text-color: #333333;
     --card-bg: #ffffff;
-    --border-color: #d1cbbd;
-    --verde: #538d4e;
-    --amarelo: #b59f3b;
-    --cinza: #6b6b6c;
-    --cinza-claro: #787c7e;
+    --border-color: #eaeaea;
+    --gov-blue: #002060;
+    --gov-dark-blue: #00184a;
+    --verde: #28a745;
+    --amarelo: #ffc107;
+    --cinza: #6c757d;
     --white: #ffffff;
-    --shadow: rgba(0,0,0,0.1);
+    --shadow: rgba(0,0,0,0.06);
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Space Mono', monospace;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    align-items: center; /* Center horizontally and vertically since it's just the game */
     min-height: 100vh;
-}
-
-.museum-header {
-    text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 1rem;
-    width: 100%;
-    max-width: 800px;
-}
-
-.museum-header h1 {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 3rem;
-    margin: 0 0 0.5rem 0;
-    letter-spacing: 2px;
-    color: #1a1a1a;
-}
-
-.museum-header p {
-    margin: 0;
-    font-size: 1rem;
-    color: #555;
 }
 
 .main-wrapper {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 2rem;
+    gap: 30px;
     width: 100%;
     max-width: 1100px;
-    padding: 0 1rem;
+    padding: 20px 15px;
     box-sizing: border-box;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
+/* Sidebar */
 .sidebar {
-    width: 250px;
+    width: 280px;
     background: var(--card-bg);
-    border: 2px solid var(--border-color);
+    border: none;
     border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 4px 6px var(--shadow);
-    max-height: 70vh;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 4px 20px var(--shadow);
+    max-height: 80vh;
     overflow-y: auto;
     box-sizing: border-box;
 }
 
 .sidebar-header {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1.1rem;
+    font-weight: 700;
     margin-bottom: 1rem;
     text-align: center;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 0.5rem;
+    color: var(--gov-blue);
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #dcdcdc; /* Subtle line under title */
 }
 
 #available-items-list {
@@ -88,113 +68,104 @@ body {
 }
 
 #available-items-list li {
-    padding: 8px;
-    border-bottom: 1px solid #eee;
-    transition: background-color 0.3s, color 0.3s;
+    padding: 12px 10px;
+    border-bottom: 1px solid #f2f2f2;
+    transition: all 0.2s;
+    border-radius: 4px;
+    color: var(--text-color);
+}
+
+#available-items-list li:hover {
+    background-color: #f8f9fc;
+    color: var(--gov-blue);
+    font-weight: 600;
+    cursor: pointer;
 }
 
 #available-items-list li.guessed-wrong {
-    background-color: var(--amarelo);
+    background-color: var(--gov-blue);
     color: var(--white);
-    border-color: var(--amarelo);
-    border-radius: 4px;
-    margin-bottom: 2px;
+    font-weight: bold;
+    border-color: var(--gov-blue);
 }
 
 #available-items-list li.guessed-correct {
     background-color: var(--verde);
     color: var(--white);
+    font-weight: bold;
     border-color: var(--verde);
-    border-radius: 4px;
-    margin-bottom: 2px;
 }
 
 #available-items-list li.eliminated {
-    opacity: 0.6;
+    opacity: 0.4;
     text-decoration: line-through;
     pointer-events: none;
     background-color: transparent;
-    color: #999;
-    border-color: #eee;
-}
-
-#available-items-list li {
-    cursor: pointer;
-}
-
-#available-items-list li:hover {
-    background-color: #f4f4f4;
 }
 
 #available-items-list li:last-child {
     border-bottom: none;
 }
 
+/* Game Container */
 .game-container {
     flex-grow: 1;
-    max-width: 800px;
+    max-width: 750px;
     width: 100%;
-}
-
-@media (max-width: 850px) {
-    .main-wrapper {
-        flex-direction: column;
-        align-items: center;
-    }
-    .sidebar {
-        width: 100%;
-        max-width: 800px;
-        order: 2;
-        margin-top: 2rem;
-    }
-    .game-container {
-        order: 1;
-    }
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 4px 20px var(--shadow);
+    box-sizing: border-box;
 }
 
 .input-section {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     margin-bottom: 2rem;
     justify-content: center;
 }
 
 #guess-input {
     flex-grow: 1;
-    max-width: 400px;
-    padding: 12px 16px;
+    max-width: 500px;
+    padding: 12px 20px;
     font-size: 1rem;
-    font-family: 'Space Mono', monospace;
-    border: 2px solid var(--border-color);
-    border-radius: 4px;
-    background: var(--card-bg);
-    transition: border-color 0.3s, box-shadow 0.3s;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #ffffff;
+    transition: all 0.3s;
+    color: var(--text-color);
 }
 
 #guess-input:focus {
     outline: none;
-    border-color: var(--text-color);
-    box-shadow: 0 0 0 3px rgba(44, 44, 44, 0.1);
+    border-color: var(--gov-blue);
+    box-shadow: 0 0 0 2px rgba(0, 32, 96, 0.15);
+}
+
+#guess-input::placeholder {
+    color: #999;
 }
 
 .interactive-btn {
-    padding: 12px 24px;
+    padding: 12px 30px;
     font-size: 1rem;
-    font-family: 'Space Mono', monospace;
-    font-weight: bold;
-    background-color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    background-color: var(--gov-blue);
     color: var(--white);
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 4px var(--shadow);
+    transition: all 0.2s ease;
 }
 
 .interactive-btn:hover {
-    background-color: #000;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px var(--shadow);
+    background-color: var(--gov-dark-blue);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .interactive-btn:active {
@@ -204,16 +175,18 @@ body {
 .legend-container {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 1.5rem;
+    gap: 20px;
+    margin-bottom: 2.5rem;
     flex-wrap: wrap;
     font-size: 0.85rem;
+    color: var(--gov-blue);
+    font-weight: 600;
 }
 
 .legend-item {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
 }
 
 .legend-box {
@@ -232,80 +205,37 @@ body {
 .legend-box.cinza { background-color: var(--cinza); }
 .legend-box.font-icon { 
     background-color: transparent; 
-    border: 1px solid var(--border-color); 
-    color: var(--text-color);
+    border: 1px solid #ccc; 
+    color: var(--gov-blue);
 }
 
+/* Grids / Results */
 .table-header {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
-    gap: 10px;
-    margin-bottom: 10px;
-    font-weight: bold;
+    gap: 12px;
+    margin-bottom: 20px;
+    font-weight: 700;
     text-align: center;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 10px;
-    font-family: 'Libre Baskerville', serif;
-    letter-spacing: 1px;
-}
-
-@media (max-width: 600px) {
-    .main-wrapper {
-        padding: 0 0.5rem;
-    }
-    .museum-header h1 {
-        font-size: 2.2rem;
-    }
-    .museum-header p {
-        font-size: 0.85rem;
-    }
-    .input-section {
-        flex-direction: column;
-        width: 100%;
-        gap: 8px;
-    }
-    #guess-input {
-        max-width: none;
-        width: 100%;
-    }
-    #submit-btn {
-        width: 100%;
-    }
-    .legend-container {
-        font-size: 0.75rem;
-        gap: 8px;
-    }
-    .table-header {
-        font-size: 0.65rem;
-        grid-template-columns: 1fr 1.1fr 0.8fr 1.1fr;
-        gap: 5px;
-    }
-    .guess-row {
-        grid-template-columns: 1fr 1.1fr 0.8fr 1.1fr;
-        gap: 5px;
-    }
-    .card-face {
-        font-size: 0.65rem;
-        word-break: break-word;
-        padding: 2px;
-        line-height: 1.1;
-    }
-    .guess-card-container {
-        height: 75px;
-    }
+    color: var(--gov-blue);
+    border-bottom: 2px solid var(--gov-blue);
+    padding-bottom: 12px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
 }
 
 .guesses-grid {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    min-height: 200px;
+    gap: 12px;
+    min-height: 100px;
 }
 
 .guess-row {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
-    gap: 10px;
+    gap: 12px;
 }
 
 .guess-card-container {
@@ -317,8 +247,7 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
-    /* Animation base */
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-style: preserve-3d;
 }
 
@@ -332,16 +261,17 @@ body {
     justify-content: center;
     text-align: center;
     font-size: 0.9rem;
-    font-weight: bold;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px var(--shadow);
+    font-weight: 600;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px var(--shadow);
     box-sizing: border-box;
+    padding: 5px;
 }
 
 .card-front {
-    background-color: var(--card-bg);
-    border: 2px solid var(--border-color);
-    color: var(--text-color);
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    color: var(--gov-blue);
 }
 
 .card-back {
@@ -349,14 +279,56 @@ body {
     transform: rotateX(180deg);
 }
 
-/* Flip state */
 .guess-card.flipped {
     transform: rotateX(180deg);
 }
 
-.verde .card-back { background-color: var(--verde); border: 2px solid #63a35d; }
-.amarelo .card-back { background-color: var(--amarelo); border: 2px solid #ccb242; }
-.cinza .card-back { background-color: var(--cinza); border: 2px solid #787878; }
+.verde .card-back { background-color: var(--verde); border: 2px solid #208b38; }
+.amarelo .card-back { background-color: var(--amarelo); border: 2px solid #d39e00; color: #333; }
+.cinza .card-back { background-color: var(--cinza); border: 2px solid #545b62; }
+
+/* Responsive tweaks */
+@media (max-width: 850px) {
+    .main-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .sidebar {
+        width: 100%;
+        max-width: 750px;
+        order: 2;
+        max-height: none;
+    }
+    .game-container {
+        order: 1;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .input-section {
+        flex-direction: column;
+        width: 100%;
+    }
+    #guess-input, #submit-btn { width: 100%; max-width: none; }
+    
+    .table-header {
+        font-size: 0.65rem;
+        grid-template-columns: 1fr 1fr 0.8fr 1fr;
+        gap: 5px;
+    }
+    .guess-row {
+        grid-template-columns: 1fr 1fr 0.8fr 1fr;
+        gap: 5px;
+    }
+    .card-face {
+        font-size: 0.7rem;
+        padding: 2px;
+    }
+    .guess-card-container {
+        height: 80px;
+    }
+}
 
 /* Modal */
 .hidden { display: none !important; opacity: 0; pointer-events: none; }
@@ -364,54 +336,56 @@ body {
 #game-over-modal {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(44,44,44,0.6);
+    background: rgba(0, 32, 96, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 100;
+    z-index: 1000;
     transition: opacity 0.3s;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
 }
 
 .modal-content {
-    background: var(--bg-color);
+    background: var(--white);
     padding: 2.5rem;
     border-radius: 8px;
     text-align: center;
-    border: 2px solid var(--border-color);
-    max-width: 400px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    animation: slideUp 0.4s ease-out;
+    border: none;
+    max-width: 450px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
 .modal-content h2 { 
     margin-top: 0; 
-    font-family: 'Libre Baskerville', serif; 
+    font-family: 'Inter', sans-serif; 
     font-size: 2rem;
     color: var(--verde);
 }
 
 .daily-countdown { 
     margin: 1.5rem 0; 
-    font-size: 1rem; 
-    color: #555; 
-    padding: 10px;
-    background: var(--card-bg);
-    border-radius: 4px;
-    border: 1px dashed var(--border-color);
+    font-size: 1.1rem; 
+    color: var(--gov-blue); 
+    padding: 15px;
+    background: #f1f4f9;
+    border-radius: 8px;
+    font-weight: 600;
 }
 
 #countdown {
-    font-weight: bold;
-    color: var(--text-color);
+    font-weight: 800;
+    color: var(--gov-dark-blue);
 }
 
 #close-modal-btn {
     width: 100%;
     margin-top: 1rem;
+    background-color: var(--cinza);
 }
+#close-modal-btn:hover { background-color: #5a6268; }

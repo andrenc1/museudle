@@ -24,16 +24,15 @@ function getSeededRandom(seedString) {
     }
 }
 
-async function init() {
+function init() {
     try {
-        const response = await fetch('data/itens.json');
-        itens = await response.json();
+        itens = itensData; // Load from local script
         setupDailyItem();
         populateDatalist();
         populateSidebar();
         setupEventListeners();
     } catch (e) {
-        console.error("Failed to load itens.json", e);
+        console.error("Failed to initialize game", e);
     }
 }
 
