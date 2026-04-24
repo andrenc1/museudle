@@ -141,84 +141,84 @@ const itensData = [
   },
   {
     "Nome": "Calculadora mecânica FACIT",
-    "Categoria": "Mecânico (Cálculo)",
+    "Categoria": "Mecânico (cálculo)",
     "Ano": 1920,
     "Criador/Empresa": "Facit",
     "Link": "https://coopermiti.com.br/museu/calculadora-sueca-facit/"
   },
   {
     "Nome": "Máquina de escrever Olivetti",
-    "Categoria": "Mecânico (Escrita)",
+    "Categoria": "Mecânico (escrita)",
     "Ano": 1910,
     "Criador/Empresa": "Olivetti",
     "Link": "https://fernandovitolo.com.br/olivetti/"
   },
   {
     "Nome": "Cartão perfurado",
-    "Categoria": "Mecânico (Papel)",
+    "Categoria": "Mecânico / Papel",
     "Ano": 1890,
     "Criador/Empresa": "Herman Hollerith / IBM",
     "Link": "https://www-ibm-com.translate.goog/history/punched-card?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc"
   },
   {
     "Nome": "Disco rígido (HDD)",
-    "Categoria": "Armazenamento (Magnético)",
+    "Categoria": "Magnético",
     "Ano": 1956,
     "Criador/Empresa": "IBM",
     "Link": "https://www.techtudo.com.br/noticias/2015/12/o-que-e-hdd-conheca-tecnologia-que-guarda-seus-dados-para-sempre.ghtml"
   },
   {
     "Nome": "Disquete (floppy disk)",
-    "Categoria": "Armazenamento (Magnético)",
+    "Categoria": "Magnético removível",
     "Ano": 1971,
     "Criador/Empresa": "IBM",
     "Link": "https://tainacan.facom.ufu.br/itens-de-armazenamento/disquete/"
   },
   {
     "Nome": "Fita cassete (dados)",
-    "Categoria": "Armazenamento (Magnético)",
+    "Categoria": "Magnético removível",
     "Ano": 1970,
     "Criador/Empresa": "Philips",
     "Link": "https://www.tecmundo.com.br/produto/406384-fitas-cassete-historia-evolucao-e-renascimento-dessa-forma-classica-de-guardar-musicas.htm"
   },
   {
     "Nome": "MAU (Multistation Access Unit)",
-    "Categoria": "Rede",
+    "Categoria": "Rede (hardware Token Ring)",
     "Ano": 1980,
     "Criador/Empresa": "IBM",
     "Link": "https://tainacan.facom.ufu.br/itens-de-redes/token-ring-ibm-8228/"
   },
   {
     "Nome": "CD (Compact Disc)",
-    "Categoria": "Armazenamento (Óptico)",
+    "Categoria": "Óptico",
     "Ano": 1982,
     "Criador/Empresa": "Sony / Philips",
     "Link": "https://tainacan.facom.ufu.br/itens-de-armazenamento/disco-compacto-cd/"
   },
   {
     "Nome": "DVD",
-    "Categoria": "Armazenamento (Óptico)",
+    "Categoria": "Óptico",
     "Ano": 1995,
     "Criador/Empresa": "Sony / Toshiba",
     "Link": "https://www.historiadetudo.com/dvd"
   },
   {
     "Nome": "Cartão SD",
-    "Categoria": "Armazenamento (Flash)",
+    "Categoria": "Memória flash",
     "Ano": 1999,
     "Criador/Empresa": "SanDisk / Panasonic / Toshiba",
     "Link": "https://www.techtudo.com.br/guia/2023/09/o-que-e-cartao-sd-tudo-sobre-o-armazenamento-edinfoeletro.ghtml"
   },
   {
     "Nome": "Pen Drive (USB Flash)",
-    "Categoria": "Armazenamento (Flash)",
+    "Categoria": "Memória flash",
     "Ano": 2000,
     "Criador/Empresa": "IBM / M-Systems",
     "Link": "https://www.giftcampaign.pt/blog/historia-memoria-usb/"
   },
   {
     "Nome": "SSD",
-    "Categoria": "Armazenamento (Flash)",
+    "Categoria": "Memória flash",
     "Ano": 1991,
     "Criador/Empresa": "SanDisk",
     "Link": "https://www.kingspec.com/pt/news/the-development-and-history-of-solid-state-drives.html"
@@ -232,63 +232,63 @@ const itensData = [
   },
   {
     "Nome": "Patinho Feio",
-    "Categoria": "Hardware (Computador)",
+    "Categoria": "Computador (experimental)",
     "Ano": 1972,
     "Criador/Empresa": "USP",
     "Link": "https://jornal.usp.br/radio-usp/patinho-feio-primeiro-computador-construido-pela-escola-politecnica-completa-50-anos/"
   },
   {
     "Nome": "Cobra 530",
-    "Categoria": "Hardware (Computador)",
+    "Categoria": "Computador (minicomputador)",
     "Ano": 1980,
     "Criador/Empresa": "COBRA",
     "Link": "https://coopermiti.com.br/museu/computador-cobra-ti-240/"
   },
   {
     "Nome": "CP-500",
-    "Categoria": "Hardware (Computador)",
+    "Categoria": "Microcomputador",
     "Ano": 1982,
     "Criador/Empresa": "Prológica",
     "Link": "http://cpmarchives.classiccmp.org/trs80/mirrors/mdutra/www.mdutra.com/pt-br/node/2"
   },
   {
     "Nome": "MSX (Brasil)",
-    "Categoria": "Hardware (Computador)",
+    "Categoria": "Microcomputador",
     "Ano": 1985,
     "Criador/Empresa": "Gradiente / Sharp",
     "Link": "https://msx.zbr.com.br/post/msx-no-brasil/"
   },
   {
     "Nome": "Atari 2600 - Atari Video Computer System",
-    "Categoria": "Hardware (Console)",
+    "Categoria": "Hardware",
     "Ano": 1977,
     "Criador/Empresa": "Atari, Inc.",
     "Link": "https://tainacan.facom.ufu.br/itens-de-entretenimento/atari-2600-atari-video-computer-system/"
   },
   {
     "Nome": "Controle PS One",
-    "Categoria": "Hardware (Periférico)",
+    "Categoria": "Hardware",
     "Ano": 2000,
     "Criador/Empresa": "Sony",
     "Link": "https://tainacan.facom.ufu.br/itens-de-entretenimento/controle-ps-one/"
   },
   {
     "Nome": "DVD Player (TF-DVD7333)",
-    "Categoria": "Hardware (Eletrônico)",
+    "Categoria": "Hardware",
     "Ano": 1996,
     "Criador/Empresa": "Coby Electronics",
     "Link": "https://tainacan.facom.ufu.br/itens-de-entretenimento/dvd-player-tf-dvd7333/"
   },
   {
     "Nome": "Floppy Disk",
-    "Categoria": "Armazenamento (Magnético)",
+    "Categoria": "Magnético removível",
     "Ano": 1990,
     "Criador/Empresa": "IBM",
     "Link": "https://tainacan.facom.ufu.br/itens-de-armazenamento/floppy-disk/"
   },
   {
     "Nome": "HD161HJ",
-    "Categoria": "Armazenamento (Hardware)",
+    "Categoria": "Hardware",
     "Ano": 2007,
     "Criador/Empresa": "Samsung",
     "Link": "https://tainacan.facom.ufu.br/itens-de-armazenamento/hd161hj/"
@@ -309,28 +309,28 @@ const itensData = [
   },
   {
     "Nome": "Processador Intel Xeon E5-2420",
-    "Categoria": "Hardware (Processador)",
+    "Categoria": "Hardware",
     "Ano": 2012,
     "Criador/Empresa": "Intel",
     "Link": "https://tainacan.facom.ufu.br/itens-de-hardware/processador-intel-xeon-e5-2420/"
   },
   {
     "Nome": "PS One (SCPH-101)",
-    "Categoria": "Hardware (Console)",
+    "Categoria": "Hardware",
     "Ano": 2000,
     "Criador/Empresa": "Sony",
     "Link": "https://tainacan.facom.ufu.br/itens-de-entretenimento/ps-one-scph-101/"
   },
   {
     "Nome": "Radinho Smart WM-1001",
-    "Categoria": "Hardware (Comunicação)",
+    "Categoria": "Hardware",
     "Ano": 1990,
     "Criador/Empresa": "Smart / CSP",
     "Link": "https://tainacan.facom.ufu.br/itens-de-comunicacao/radinho-smart-wm-1001/"
   },
   {
     "Nome": "Sega Mega Drive Genesis",
-    "Categoria": "Hardware (Console)",
+    "Categoria": "Hardware",
     "Ano": 1988,
     "Criador/Empresa": "Sega / Tectoy",
     "Link": "https://tainacan.facom.ufu.br/itens-de-entretenimento/sega-mega-drive-genesis/"
@@ -344,7 +344,7 @@ const itensData = [
   },
   {
     "Nome": "Telefone sem fio Digital, TS 40 ID",
-    "Categoria": "Hardware (Comunicação)",
+    "Categoria": "Hardware",
     "Ano": 2010,
     "Criador/Empresa": "Intelbras",
     "Link": "https://tainacan.facom.ufu.br/itens-de-comunicacao/telefone-sem-fio-digital-ts-40-id/"
