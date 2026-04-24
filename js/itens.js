@@ -141,84 +141,84 @@ const itensData = [
   },
   {
     "Nome": "Calculadora mecânica FACIT",
-    "Categoria": "Mecânico (cálculo)",
+    "Categoria": "Mecânico (Cálculo)",
     "Ano": 1920,
     "Criador/Empresa": "Facit",
     "Link": "https://coopermiti.com.br/museu/calculadora-sueca-facit/"
   },
   {
     "Nome": "Máquina de escrever Olivetti",
-    "Categoria": "Mecânico (escrita)",
+    "Categoria": "Mecânico (Escrita)",
     "Ano": 1910,
     "Criador/Empresa": "Olivetti",
     "Link": "https://fernandovitolo.com.br/olivetti/"
   },
   {
     "Nome": "Cartão perfurado",
-    "Categoria": "Mecânico / Papel",
+    "Categoria": "Mecânico (Papel)",
     "Ano": 1890,
     "Criador/Empresa": "Herman Hollerith / IBM",
     "Link": "https://www-ibm-com.translate.goog/history/punched-card?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc"
   },
   {
     "Nome": "Disco rígido (HDD)",
-    "Categoria": "Magnético",
+    "Categoria": "Armazenamento (Magnético)",
     "Ano": 1956,
     "Criador/Empresa": "IBM",
     "Link": "https://www.techtudo.com.br/noticias/2015/12/o-que-e-hdd-conheca-tecnologia-que-guarda-seus-dados-para-sempre.ghtml"
   },
   {
     "Nome": "Disquete (floppy disk)",
-    "Categoria": "Magnético removível",
+    "Categoria": "Armazenamento (Magnético)",
     "Ano": 1971,
     "Criador/Empresa": "IBM",
     "Link": "https://tainacan.facom.ufu.br/itens-de-armazenamento/disquete/"
   },
   {
     "Nome": "Fita cassete (dados)",
-    "Categoria": "Magnético removível",
+    "Categoria": "Armazenamento (Magnético)",
     "Ano": 1970,
     "Criador/Empresa": "Philips",
     "Link": "https://www.tecmundo.com.br/produto/406384-fitas-cassete-historia-evolucao-e-renascimento-dessa-forma-classica-de-guardar-musicas.htm"
   },
   {
     "Nome": "MAU (Multistation Access Unit)",
-    "Categoria": "Rede (hardware Token Ring)",
+    "Categoria": "Rede",
     "Ano": 1980,
     "Criador/Empresa": "IBM",
     "Link": "https://tainacan.facom.ufu.br/itens-de-redes/token-ring-ibm-8228/"
   },
   {
     "Nome": "CD (Compact Disc)",
-    "Categoria": "Óptico",
+    "Categoria": "Armazenamento (Óptico)",
     "Ano": 1982,
     "Criador/Empresa": "Sony / Philips",
     "Link": "https://tainacan.facom.ufu.br/itens-de-armazenamento/disco-compacto-cd/"
   },
   {
     "Nome": "DVD",
-    "Categoria": "Óptico",
+    "Categoria": "Armazenamento (Óptico)",
     "Ano": 1995,
     "Criador/Empresa": "Sony / Toshiba",
     "Link": "https://www.historiadetudo.com/dvd"
   },
   {
     "Nome": "Cartão SD",
-    "Categoria": "Memória flash",
+    "Categoria": "Armazenamento (Flash)",
     "Ano": 1999,
     "Criador/Empresa": "SanDisk / Panasonic / Toshiba",
     "Link": "https://www.techtudo.com.br/guia/2023/09/o-que-e-cartao-sd-tudo-sobre-o-armazenamento-edinfoeletro.ghtml"
   },
   {
     "Nome": "Pen Drive (USB Flash)",
-    "Categoria": "Memória flash",
+    "Categoria": "Armazenamento (Flash)",
     "Ano": 2000,
     "Criador/Empresa": "IBM / M-Systems",
     "Link": "https://www.giftcampaign.pt/blog/historia-memoria-usb/"
   },
   {
     "Nome": "SSD",
-    "Categoria": "Memória flash",
+    "Categoria": "Armazenamento (Flash)",
     "Ano": 1991,
     "Criador/Empresa": "SanDisk",
     "Link": "https://www.kingspec.com/pt/news/the-development-and-history-of-solid-state-drives.html"
@@ -232,133 +232,133 @@ const itensData = [
   },
   {
     "Nome": "Patinho Feio",
-    "Categoria": "Computador (experimental)",
+    "Categoria": "Hardware (Computador)",
     "Ano": 1972,
     "Criador/Empresa": "USP",
     "Link": "https://jornal.usp.br/radio-usp/patinho-feio-primeiro-computador-construido-pela-escola-politecnica-completa-50-anos/"
   },
   {
     "Nome": "Cobra 530",
-    "Categoria": "Computador (minicomputador)",
+    "Categoria": "Hardware (Computador)",
     "Ano": 1980,
     "Criador/Empresa": "COBRA",
     "Link": "https://coopermiti.com.br/museu/computador-cobra-ti-240/"
   },
   {
     "Nome": "CP-500",
-    "Categoria": "Microcomputador",
+    "Categoria": "Hardware (Computador)",
     "Ano": 1982,
     "Criador/Empresa": "Prológica",
     "Link": "http://cpmarchives.classiccmp.org/trs80/mirrors/mdutra/www.mdutra.com/pt-br/node/2"
   },
   {
     "Nome": "MSX (Brasil)",
-    "Categoria": "Microcomputador",
+    "Categoria": "Hardware (Computador)",
     "Ano": 1985,
     "Criador/Empresa": "Gradiente / Sharp",
     "Link": "https://msx.zbr.com.br/post/msx-no-brasil/"
   },
   {
     "Nome": "Atari 2600 - Atari Video Computer System",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Hardware (Console)",
     "Ano": 1977,
     "Criador/Empresa": "Atari, Inc.",
     "Link": "https://tainacan.facom.ufu.br/itens-de-entretenimento/atari-2600-atari-video-computer-system/"
   },
   {
     "Nome": "Controle PS One",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Hardware (Periférico)",
     "Ano": 2000,
     "Criador/Empresa": "Sony",
     "Link": "https://tainacan.facom.ufu.br/itens-de-entretenimento/controle-ps-one/"
   },
   {
     "Nome": "DVD Player (TF-DVD7333)",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Hardware (Eletrônico)",
     "Ano": 1996,
     "Criador/Empresa": "Coby Electronics",
     "Link": "https://tainacan.facom.ufu.br/itens-de-entretenimento/dvd-player-tf-dvd7333/"
   },
   {
     "Nome": "Floppy Disk",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Armazenamento (Magnético)",
     "Ano": 1990,
     "Criador/Empresa": "IBM",
     "Link": "https://tainacan.facom.ufu.br/itens-de-armazenamento/floppy-disk/"
   },
   {
     "Nome": "HD161HJ",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Armazenamento (Hardware)",
     "Ano": 2007,
     "Criador/Empresa": "Samsung",
     "Link": "https://tainacan.facom.ufu.br/itens-de-armazenamento/hd161hj/"
   },
   {
     "Nome": "IBM 8229",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Rede",
     "Ano": 1990,
     "Criador/Empresa": "IBM",
     "Link": "https://tainacan.facom.ufu.br/itens-de-redes/ibm-8229/"
   },
   {
     "Nome": "IBM 8230",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Rede",
     "Ano": 1990,
     "Criador/Empresa": "IBM",
     "Link": "https://tainacan.facom.ufu.br/itens-de-redes/ibm-8230/"
   },
   {
     "Nome": "Processador Intel Xeon E5-2420",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Hardware (Processador)",
     "Ano": 2012,
     "Criador/Empresa": "Intel",
     "Link": "https://tainacan.facom.ufu.br/itens-de-hardware/processador-intel-xeon-e5-2420/"
   },
   {
     "Nome": "PS One (SCPH-101)",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Hardware (Console)",
     "Ano": 2000,
     "Criador/Empresa": "Sony",
     "Link": "https://tainacan.facom.ufu.br/itens-de-entretenimento/ps-one-scph-101/"
   },
   {
     "Nome": "Radinho Smart WM-1001",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Hardware (Comunicação)",
     "Ano": 1990,
     "Criador/Empresa": "Smart / CSP",
     "Link": "https://tainacan.facom.ufu.br/itens-de-comunicacao/radinho-smart-wm-1001/"
   },
   {
     "Nome": "Sega Mega Drive Genesis",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Hardware (Console)",
     "Ano": 1988,
     "Criador/Empresa": "Sega / Tectoy",
     "Link": "https://tainacan.facom.ufu.br/itens-de-entretenimento/sega-mega-drive-genesis/"
   },
   {
     "Nome": "Solaris 10 operating system",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Sistema Operacional",
     "Ano": 2005,
     "Criador/Empresa": "Sun Microsystems",
     "Link": "https://tainacan.facom.ufu.br/software/solaris-10-operating-system/"
   },
   {
     "Nome": "Telefone sem fio Digital, TS 40 ID",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Hardware (Comunicação)",
     "Ano": 2010,
     "Criador/Empresa": "Intelbras",
     "Link": "https://tainacan.facom.ufu.br/itens-de-comunicacao/telefone-sem-fio-digital-ts-40-id/"
   },
   {
     "Nome": "Token Ring IBM 53F5501",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Rede",
     "Ano": 1990,
     "Criador/Empresa": "IBM",
     "Link": "https://tainacan.facom.ufu.br/itens-de-redes/token-ring-ibm-53f5501/"
   },
   {
     "Nome": "Token Ring IBM Type 8220 (96X5810)",
-    "Categoria": "Acervo Tainacan",
+    "Categoria": "Rede",
     "Ano": 1990,
     "Criador/Empresa": "IBM",
     "Link": "https://tainacan.facom.ufu.br/itens-de-redes/token-ring-ibm-type-8220-96x5810/"
