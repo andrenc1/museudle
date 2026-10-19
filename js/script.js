@@ -2,6 +2,10 @@ let itens = [];
 let dailyItem = null;
 let guesses = [];
 let gameWon = false;
+let todayStr = '';
+
+const STORAGE_KEY = 'museudle-progresso';
+let feedbackTimeout = null;
 
 // Format current date statically for the day (local time based)
 function getTodayString() {
@@ -31,17 +35,17 @@ function init() {
         populateDatalist();
         populateSidebar();
         setupEventListeners();
+        restoreProgress();
     } catch (e) {
         console.error("Failed to initialize game", e);
     }
 }
 
 function setupDailyItem() {
-    const todayStr = getTodayString();
+    todayStr = getTodayString();
     const rng = getSeededRandom(todayStr);
     const index = Math.floor(rng() * itens.length);
     dailyItem = itens[index];
-    console.log("Daily Item (Debug):", dailyItem.Nome);
 }
 
 function populateDatalist() {
@@ -138,29 +142,24 @@ function handleGuess() {
 
     const guessItem = itens.find(i => i.Nome.toLowerCase() === guessName.toLowerCase());
     if (!guessItem) {
-        alert("Artefato não encontrado no museu. Verifique a lista de sugestões.");
+        showFeedback("Artefato não encontrado no museu. Escolha um item da lista de sugestões.");
         return;
     }
 
     // Check if already guessed
     if (guesses.find(g => g.Nome.toLowerCase() === guessItem.Nome.toLowerCase())) {
-        alert("Você já analisou este artefato hoje.");
+        showFeedback("Você já analisou este artefato hoje.");
         input.value = '';
         return;
     }
 
     guesses.push(guessItem);
-    
-    // Highlight sidebar item
-    const isCorrect = guessItem.Nome.toLowerCase() === dailyItem.Nome.toLowerCase();
-    const listItems = document.querySelectorAll('#available-items-list li');
-    listItems.forEach(li => {
-        if (li.dataset.nome === guessItem.Nome) {
-            li.classList.add(isCorrect ? 'guessed-correct' : 'guessed-wrong');
-        }
-    });
+    saveProgress();
+    clearFeedback();
 
-    
+    const isCorrect = guessItem.Nome.toLowerCase() === dailyItem.Nome.toLowerCase();
+    markSidebarItem(guessItem, isCorrect);
+
     renderRow(guessItem, true);
     updateSidebar();
     input.value = '';
@@ -254,16 +253,17 @@ function renderRow(guessItem, animate = true) {
         const cardContainer = document.createElement('div');
         cardContainer.className = `guess-card-container ${col.color}`;
         
-        cardContainer.innerHTML = `
-            <div class="guess-card">
-                <div class="card-face card-front">${col.label}</div>
-                <div class="card-face card-back">${col.label}</div>
-            </div>
-        `;
+        const card = document.createElement('div');
+        card.className = 'guess-card';
+        ['card-front', 'card-back'].forEach(side => {
+            const face = document.createElement('div');
+            face.className = `card-face ${side}`;
+            face.textContent = col.label;
+            card.appendChild(face);
+        });
+        cardContainer.appendChild(card);
 
         row.appendChild(cardContainer);
-
-        const card = cardContainer.querySelector('.guess-card');
         if (animate) {
             setTimeout(() => {
                 card.classList.add('flipped');
@@ -321,6 +321,64 @@ function updateCountdown() {
         countdownEl.textContent = 
             `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
     }
+}
+
+// ---------- Progresso do dia (localStorage) ----------
+// Salva os palpites do dia para que o jogador não perca o progresso ao recarregar a página.
+function saveProgress() {
+    try {
+        const data = { data: todayStr, palpites: guesses.map(g => g.Nome) };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {
+        // Navegação privada ou armazenamento bloqueado: o jogo continua funcionando sem salvar
+    }
+}
+
+function restoreProgress() {
+    let saved = null;
+    try {
+        saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    } catch (e) {
+        return;
+    }
+    // Progresso de outro dia é descartado
+    if (!saved || saved.data !== todayStr || !Array.isArray(saved.palpites)) return;
+
+    saved.palpites.forEach(nome => {
+        const item = itens.find(i => i.Nome === nome);
+        if (!item || guesses.includes(item)) return;
+        guesses.push(item);
+        const isCorrect = item.Nome === dailyItem.Nome;
+        markSidebarItem(item, isCorrect);
+        renderRow(item, false);
+        if (isCorrect) gameWon = true;
+    });
+    updateSidebar();
+
+    if (gameWon) showGameOverModal(true, false);
+}
+
+function markSidebarItem(item, isCorrect) {
+    const listItems = document.querySelectorAll('#available-items-list li');
+    listItems.forEach(li => {
+        if (li.dataset.nome === item.Nome) {
+            li.classList.add(isCorrect ? 'guessed-correct' : 'guessed-wrong');
+        }
+    });
+}
+
+// ---------- Mensagens na tela ----------
+function showFeedback(message) {
+    const el = document.getElementById('feedback');
+    if (!el) return;
+    el.textContent = message;
+    if (feedbackTimeout) clearTimeout(feedbackTimeout);
+    feedbackTimeout = setTimeout(clearFeedback, 4000);
+}
+
+function clearFeedback() {
+    const el = document.getElementById('feedback');
+    if (el) el.textContent = '';
 }
 
 // Initialize on DOM load

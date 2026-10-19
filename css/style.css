@@ -127,6 +127,7 @@ body {
 }
 
 #guess-input {
+    box-sizing: border-box;
     flex-grow: 1;
     max-width: 500px;
     padding: 12px 20px;
@@ -389,3 +390,16 @@ body {
     background-color: var(--cinza);
 }
 #close-modal-btn:hover { background-color: #5a6268; }
+
+/* Mensagens de aviso (palpite inválido ou repetido) */
+.feedback {
+    margin: -1rem 0 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #b02a37;
+}
+
+.feedback:empty {
+    display: none;
+}
