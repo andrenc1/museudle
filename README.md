@@ -1,88 +1,88 @@
 # MuseuDle
 
-Jogo diário de adivinhação sobre a história da computação, criado para o **Museu da Computação da UFU** como projeto de extensão da Universidade Federal de Uberlândia.
+A daily guessing game about the history of computing, created for the **UFU Computing Museum** (Museu da Computação) as an extension project of the Federal University of Uberlândia, Brazil. *The game interface is in Portuguese.*
 
-Todo dia o jogo sorteia um artefato (uma pessoa, um computador, uma linguagem, um sistema operacional...) e o jogador tem que descobrir qual é, usando dicas de categoria, ano e criador.
+Every day the game picks an artifact (a person, a computer, a programming language, an operating system...) and the player has to figure out which one it is, using hints about category, year and creator.
 
-**[▶ Jogar agora](https://andrenc1.github.io/museudle/)**
+**[▶ Play now](https://andrenc1.github.io/museudle/)**
 
 <p align="center">
-  <img src="docs/screenshot-desktop.png" alt="Tela do MuseuDle no computador, com três palpites e as dicas coloridas" width="720">
+  <img src="docs/screenshot-desktop.png" alt="MuseuDle on desktop, showing three guesses and the colored hints" width="720">
 </p>
 
-## Como jogar
+## How to play
 
-1. Digite o nome de um artefato ou clique em um item da lista **Itens Disponíveis**.
-2. Cada palpite mostra uma linha com quatro dicas:
+1. Type the name of an artifact, or click an item in the **Itens Disponíveis** (available items) list.
+2. Each guess shows a row with four hints:
 
-| Cor | Significado |
+| Color | Meaning |
 |---|---|
-| 🟩 Verde | O atributo é igual ao do artefato do dia |
-| 🟨 Amarelo | Acerto parcial: o criador ou a empresa tem um nome em comum |
-| ⬜ Cinza | O atributo é diferente |
-| ⬆️ ⬇️ | O artefato do dia é mais novo ⬆️ ou mais antigo ⬇️ que o seu palpite |
+| 🟩 Green | The attribute matches the artifact of the day |
+| 🟨 Yellow | Partial match: the creator or company shares a name |
+| ⬜ Gray | The attribute is different |
+| ⬆️ ⬇️ | The artifact of the day is newer ⬆️ or older ⬇️ than your guess |
 
-3. A lista lateral risca automaticamente os itens que já não podem ser a resposta, com base nas dicas recebidas.
-4. Ao acertar, o botão **Saiba Mais** mostra os dados do artefato e o link para o acervo digital do museu ou para uma fonte sobre ele.
-5. Um novo artefato aparece à meia-noite (horário do seu computador).
+3. The side list automatically strikes through items that can no longer be the answer, based on the hints received.
+4. When you guess correctly, the **Saiba Mais** (Learn More) button shows the artifact's details and a link to the museum's digital collection or to another source about it.
+5. A new artifact appears at midnight (your computer's local time).
 
-## Funcionalidades
+## Features
 
-- **52 artefatos** da história da computação, de Ada Lovelace ao armazenamento em nuvem, vários deles com link para o [acervo digital do Museu da Computação](https://tainacan.facom.ufu.br/)
-- **Mesmo desafio para todos os jogadores** no mesmo dia, sem precisar de servidor
-- **Progresso salvo no navegador:** recarregar a página não apaga os palpites do dia
-- **Filtro de eliminação** que risca os itens incompatíveis com as dicas
-- **Layout responsivo**, pensado também para o celular
-- Feito com **JavaScript puro**, sem frameworks nem bibliotecas
+- **52 artifacts** from the history of computing, from Ada Lovelace to cloud storage, several of them linked to the [Computing Museum's digital collection](https://tainacan.facom.ufu.br/)
+- **The same challenge for every player** on the same day, with no server needed
+- **Progress saved in the browser:** reloading the page doesn't erase the day's guesses
+- **Elimination filter** that strikes through items incompatible with the hints
+- **Responsive layout**, designed for mobile as well
+- Built with **vanilla JavaScript**, no frameworks or libraries
 
 <p align="center">
-  <img src="docs/screenshot-mobile.png" alt="Tela do MuseuDle no celular" width="260">
+  <img src="docs/screenshot-mobile.png" alt="MuseuDle on mobile" width="260">
 </p>
 
-## Como funciona
+## How it works
 
-**Escolha do artefato do dia.** A data local (`AAAA-MM-DD`) passa por uma função de hash e vira a semente de um gerador pseudoaleatório (Mulberry32). Como a semente é a mesma para todos no mesmo dia, todos recebem o mesmo artefato, e isso é calculado no próprio navegador.
+**Picking the artifact of the day.** The local date (`YYYY-MM-DD`) goes through a hash function and becomes the seed of a pseudorandom number generator (Mulberry32). Since the seed is the same for everyone on the same day, everyone gets the same artifact, and it is computed entirely in the browser.
 
 ```js
-const rng = getSeededRandom(getTodayString()); // ex.: "2026-10-19"
+const rng = getSeededRandom(getTodayString()); // e.g. "2026-10-19"
 dailyItem = itens[Math.floor(rng() * itens.length)];
 ```
 
-**Dicas.** Cada palpite é comparado com o artefato do dia em quatro atributos. O criador conta como acerto parcial quando os dois compartilham um nome (os nomes são separados por `/`, como em `Sony / Philips`).
+**Hints.** Each guess is compared with the artifact of the day on four attributes. The creator counts as a partial match when both share a name (names are separated by `/`, as in `Sony / Philips`).
 
-**Filtro de eliminação.** Depois de cada palpite, o jogo percorre todos os itens e risca os que contradizem alguma dica já recebida: categoria errada, ano fora do intervalo possível ou criador diferente quando o criador já foi acertado.
+**Elimination filter.** After each guess, the game goes through all items and strikes through those that contradict any hint already received: wrong category, year outside the possible range, or a different creator when the creator has already been matched.
 
-**Progresso.** Os palpites do dia ficam no `localStorage` do navegador. No dia seguinte, o progresso antigo é descartado.
+**Progress.** The day's guesses are stored in the browser's `localStorage`. The next day, the old progress is discarded.
 
-## Estrutura do projeto
+## Project structure
 
 ```
 museudle/
-├── index.html        # Estrutura da página
+├── index.html        # Page structure
 ├── css/
-│   └── style.css     # Estilos e layout responsivo
+│   └── style.css     # Styles and responsive layout
 ├── js/
-│   ├── itens.js      # Lista de artefatos do jogo
-│   └── script.js     # Lógica do jogo
-└── docs/             # Imagens usadas neste README
+│   ├── itens.js      # List of game artifacts
+│   └── script.js     # Game logic
+└── docs/             # Images used in this README
 ```
 
-Os artefatos ficam em um arquivo `.js`, e não em um `.json`, para que o jogo funcione abrindo o `index.html` direto no computador: navegadores bloqueiam o carregamento de arquivos JSON locais por `file://`.
+Artifacts live in a `.js` file instead of a `.json` file so the game works by opening `index.html` directly from disk: browsers block loading local JSON files over `file://`.
 
-## Como rodar localmente
+## Running locally
 
-Não precisa instalar nada.
+No installation needed.
 
 ```bash
 git clone https://github.com/andrenc1/museudle.git
 cd museudle
 ```
 
-Depois, abra o arquivo `index.html` no navegador.
+Then open `index.html` in your browser.
 
-## Como adicionar um artefato
+## Adding an artifact
 
-Inclua um objeto novo na lista em `js/itens.js`:
+Add a new object to the list in `js/itens.js`:
 
 ```js
 {
@@ -90,20 +90,20 @@ Inclua um objeto novo na lista em `js/itens.js`:
   "Categoria": "Microcomputador",
   "Ano": 1982,
   "Criador/Empresa": "Commodore",
-  "Link": "https://link-para-saber-mais"
+  "Link": "https://link-to-learn-more"
 }
 ```
 
-- **Categoria:** use uma categoria que já exista, para que a dica de categoria funcione bem.
-- **Criador/Empresa:** separe vários nomes com ` / `, que é o que permite o acerto parcial. Use `N/A` quando não se aplicar.
-- **Link:** se o item estiver no acervo do museu, use o link do Tainacan; o botão passa a mostrar **Ver no Acervo**.
+- **Categoria (category):** use a category that already exists, so the category hint works well.
+- **Criador/Empresa (creator/company):** separate multiple names with ` / `, which is what enables the partial match. Use `N/A` when it doesn't apply.
+- **Link:** if the item is in the museum's collection, use the Tainacan link; the button then shows **Ver no Acervo** (View in Collection).
 
-## Próximos passos
+## Next steps
 
-- Estatísticas do jogador (vitórias e sequência de dias)
-- Botão para compartilhar o resultado do dia
-- Mais artefatos do acervo do museu
+- Player stats (wins and day streak)
+- Button to share the day's result
+- More artifacts from the museum's collection
 
-## Créditos
+## Credits
 
-Desenvolvido por [André Noro Crivellenti](https://www.linkedin.com/in/andre-noro/) para o Museu da Computação da Faculdade de Computação (FACOM) da Universidade Federal de Uberlândia.
+Developed by [André Noro Crivellenti](https://www.linkedin.com/in/andre-noro/) for the Computing Museum of the School of Computing (FACOM) at the Federal University of Uberlândia.
